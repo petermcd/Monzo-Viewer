@@ -11,9 +11,7 @@ def start(local_only: bool = True, port: int = 5000, debug: bool = False):
         port: Port to list on
         debug: Start in debugging mode if True
     """
-    host: str = '127.0.0.1'
-    if not local_only:
-        host = '0.0.0.0'
+    host = '127.0.0.1' if local_only else '0.0.0.0'
     app.run(host=host, port=port, debug=debug)
 
 
