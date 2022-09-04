@@ -81,7 +81,7 @@ def setup_callback():
         auth.register_callback_handler(handler=MONZO_HANDLER)
         try:
             auth.authenticate(authorization_token=code, state_token=state)
-            return redirect(location='/')
+            return render_template('success.html')
         except MonzoAuthenticationError:
             context['error'] = 'Monzo authentication error'
         except MonzoServerError:
@@ -94,9 +94,9 @@ def setup_callback():
 @app.route('/', methods=['GET', 'POST'])
 def index():
     """Handle displaying accounts."""
-    auth = auth_setup()
     if not MONZO_HANDLER.is_configured:
-        redirect('/setup/')
+        return redirect('/setup/')
+    auth = auth_setup()
     if request.method == 'POST' and escape(request.form['account']):
         return redirect(f"/accounts/{escape(request.form['account'])}/")
     context = {'accounts': Account.fetch(auth=auth)}

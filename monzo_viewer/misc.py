@@ -48,6 +48,7 @@ class FileSystem(Storage):
         self._client_secret = client_secret
         self._expiry = 0
         self._refresh_token = ''
+        self._fetched = False
 
         content = {
             'access_token': self._access_token,
@@ -130,6 +131,7 @@ class FileSystem(Storage):
             'access_token',
             'expiry',
         ]
+        print(all(self.__getattribute__(key) for key in keys))
         return all(self.__getattribute__(key) for key in keys)
 
     @property
