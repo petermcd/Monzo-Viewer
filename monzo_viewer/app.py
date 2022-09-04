@@ -93,29 +93,29 @@ def setup_callback():
 @app.route('/', methods=['GET', 'POST'])
 def index():
     """Handle displaying accounts."""
-    context = {}
     auth = auth_setup()
     if not MONZO_HANDLER.is_configured:
         redirect('/setup/')
-    if request.method == 'POST':
-        if escape(request.form['account']):
-            return redirect(f"/accounts/{escape(request.form['account'])}/")
-    context['accounts'] = Account.fetch(auth=auth)
+    if request.method == 'POST' and escape(request.form['account']):
+        return redirect(f"/accounts/{escape(request.form['account'])}/")
+    context = {'accounts': Account.fetch(auth=auth)}
     return render_template('index.html', **context)
 
 
 @app.route('/accounts/<account>/')
 def transactions_for_account(account: str):
     """Handle displaying transactions for an account."""
-    context = {}
     auth = auth_setup()
     thirty_days_ago = datetime.now() - timedelta(days=30)
-    context['transactions'] = Transaction.fetch(
-        auth=auth,
-        account_id=account,
-        since=thirty_days_ago,
-        expand=['merchant']
-    )
+    context = {
+        'transactions': Transaction.fetch(
+            auth=auth,
+            account_id=account,
+            since=thirty_days_ago,
+            expand=['merchant'],
+        )
+    }
+
     return render_template('transactions.html', **context)
 
 
