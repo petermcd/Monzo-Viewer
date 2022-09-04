@@ -4,11 +4,12 @@ from json import dumps, loads
 from typing import Any, Optional
 
 from flask import Flask, escape, redirect, render_template, request
-from misc import FileSystem
 from monzo.authentication import Authentication
 from monzo.endpoints.account import Account
 from monzo.endpoints.transaction import Transaction
 from monzo.exceptions import MonzoAuthenticationError, MonzoPermissionsError, MonzoServerError
+
+from monzo_viewer.misc import FileSystem
 
 app = Flask(__name__, template_folder='templates')
 
