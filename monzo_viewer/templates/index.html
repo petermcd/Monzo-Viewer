@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title>Monzo API</title>
+    </head>
+    <body>
+        <h1>Monzo API</h1>
+        <h2>Accounts</h2>
+        <form method="post" action="/">
+            <label for="account">Accounts</label>
+            <select id='account' name='account'>
+            {% for account in accounts %}
+                <option value='{{ account.account_id }}'>{{ account.description }}</option>
+            {% endfor %}
+            </select> <br />
+            <input type="submit" name="Submit">
+        </form>
+    </body>
+</html>
