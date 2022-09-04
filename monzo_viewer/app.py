@@ -1,7 +1,7 @@
 """Entry point for the viewer."""
 from datetime import datetime, timedelta
 from json import dumps, loads
-from typing import Any, Optional
+from typing import Any, Dict, Optional
 
 from flask import Flask, escape, redirect, render_template, request
 from monzo.authentication import Authentication
@@ -154,8 +154,8 @@ def get_raw_request(
         path: str,
         authenticated: bool = True,
         request_type: str = 'get',
-        headers: Optional[dict[str, Any]] = None,
-        parameters: Optional[dict[str, Any]] = None,
+        headers: Optional[Dict[str, Any]] = None,
+        parameters: Optional[Dict[str, Any]] = None,
 ):
     """
     Perform a raw request.
