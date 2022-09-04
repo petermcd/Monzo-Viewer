@@ -1,0 +1,2 @@
+flask==2.2.2
+monzo-api==0.2.0
