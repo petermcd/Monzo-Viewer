@@ -1,0 +1,7 @@
+<tr>
+    <td>{{ transaction.merchant.name }}</td>
+    <td>{{ transaction.description }}</td>
+    <td>{{ transaction.created }}</td>
+    <td>{{ transaction.currency }}{{ "%.2f"|format(transaction.amount / 100) }}</td>
+    <td></td>
+</tr>

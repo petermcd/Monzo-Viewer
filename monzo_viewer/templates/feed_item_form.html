@@ -1,0 +1,36 @@
+<h2>Feed Item</h2>
+<div id="message"></div>
+<form id="form" hx-post="/feed_item" hx-swap="innerHTML" hx-target="#message">
+    {% include 'account_select.html' %}
+    <div class="row">
+        <div class="col-3"><label for="title">Title</label></div>
+        <div class="col-9"><input type="text" name="title" class="col-9" required /></div>
+    </div>
+    <div class="row">
+        <div class="col-3"><label for="title_color">Title Color</label></div>
+        <div class="col-9"><input type="text" name="title_color" class="col-9" maxlength="7"></div>
+    </div>
+    <div class="row">
+        <div class="col-3"><label for="image_url">Image URL</label></div>
+        <div class="col-9"><input type="text" name="image_url" class="col-9" required /></div>
+    </div>
+    <div class="row">
+        <div class="col-3"><label for="feed_item_url">Feed item URL</label></div>
+        <div class="col-9"><input type="text" name="feed_item_url" class="col-9" /></div>
+    </div>
+    <div class="row">
+        <div class="col-3"><label for="body">Body</label></div>
+        <div class="col-9"><textarea name="body" class="col-9" rows="10"></textarea></div>
+    </div>
+    <div class="row">
+        <div class="col-3"><label for="body_color">Body Color</label></div>
+        <div class="col-9"><input type="text" name="body_color" class="col-9" maxlength="7"></div>
+    </div>
+    <div class="row">
+        <div class="col-3"><label for="background_color">Background Color</label></div>
+        <div class="col-9"><input type="text" name="background_color" class="col-9" maxlength="7"></div>
+    </div>
+    <div class="row">
+        <div class="col-12"><button hx-trigger="click" type="submit">Post Feed Item</button></div>
+    </div>
+</form>

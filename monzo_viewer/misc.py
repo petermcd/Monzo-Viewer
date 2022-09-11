@@ -131,7 +131,6 @@ class FileSystem(Storage):
             'access_token',
             'expiry',
         ]
-        print(all(self.__getattribute__(key) for key in keys))
         return all(self.__getattribute__(key) for key in keys)
 
     @property

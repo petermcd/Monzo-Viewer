@@ -1,0 +1,8 @@
+<h2>Accounts</h2>
+<form id="form" hx-post="/transactions" hx-swap="innerHTML" hx-target="#extra">
+    {% include 'account_select.html' %}
+    <div class="row">
+        <div class="col-12"><button hx-trigger="click" type="submit">Fetch Transactions</button></div>
+    </div>
+</form>
+<div id="extra"></div>

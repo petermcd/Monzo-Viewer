@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>Monzo Viewer</title>
+        <script type="text/javascript" src="/static/js/htmx.min.js"></script>
+        <script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
+        <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/static/css/monzo-viewer.css">
+    </head>
+    <body class="d-flex flex-column h-100">
+        <header>
+            <nav class="navbar navbar-expand-lg">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="/">Monzo Viewer</a>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            {% for link in links %}
+                                <li class="nav-item active" hx-get="{{ link.url }}" hx-swap="innerHTML" hx-target="#content">
+                                    <a class="nav-link" href="#">{{ link.name }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <main class="flex-shrink-0">
+            <div class="container">
+                {% block content %}Wow content is missing{% endblock %}
+            </div>
+        </main>
+        <footer class="footer mt-auto py-3">
+            <div class="container">
+                <span>Monzo Viewer | <a href="https://github.com/petermcd/Monzo-Viewer">Github</a></span>
+            </div>
+        </footer>
+    <script type="text/javascript" src="/static/js/monzo-viewer.js"></script>
+    </body>
+</html>
